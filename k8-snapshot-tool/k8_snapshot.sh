@@ -47,11 +47,13 @@ for ns in $namespaces; do
     echo "  Descargando eventos"
     kubectl get events -n $ns -o yaml > "${ns_dir}/events.yaml"
     kubectl get all -n $ns > "${ns_dir}/summary.txt"
+    kubectl top pod -n $ns --sum=true > "${ns_dir}/top-summary.txt"
 done
 
 echo "Descarga completa."
 
 # Generar un archivo de resumen con la cantidad de archivos por recurso y namespace
+kubectl top node --show-capacity=true > "${BASE_DIR}/top-summary.txt"
 summary_file="${BASE_DIR}/summary.txt"
 echo "Generando resumen de configuraciones..." > "$summary_file"
 
@@ -67,7 +69,7 @@ for ns_dir in ${BASE_DIR}/*; do
                 resource=$(basename "$resource_dir")
                 count=$(find "$resource_dir" -type f -name "*.yaml" | wc -l)
                 echo "  $resource: " >> "$summary_file"
-                echo "  $count files" >> "$summary_file"
+                echo "$count files" >> "$summary_file"
             fi
         done
         echo "" >> "$summary_file" # Añadir una línea en blanco para separar los namespaces
