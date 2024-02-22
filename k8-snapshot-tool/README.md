@@ -20,6 +20,11 @@ Para utilizar este script, necesitas tener instalado y configurado lo siguiente:
 ## Uso
 
 1. **Descargar el Script** : Primero, descarga el script `k8_snapshot.sh` en tu máquina local o servidor que tiene acceso al cluster de Kubernetes.
+
+```sh
+wget https://raw.githubusercontent.com/orion-global/utils/k8-snapshot-tool/main/k8_snapshot.sh -O k8_snapshot.sh
+```
+
 2. **Hacer el Script Ejecutable** :
    Ejecuta el siguiente comando para hacer el script ejecutable:
 
