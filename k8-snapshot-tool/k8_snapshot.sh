@@ -7,6 +7,8 @@ TODAY=$(date +%F)
 # Directorio base
 BASE_DIR="./ClusterSnapshot_Orion_${TODAY}"
 
+SNAPSHOT_NAME="ClusterSnapshot_Orion_${TODAY}.zip"
+
 # Crear el directorio base si no existe
 mkdir -p "$BASE_DIR"
 
@@ -75,6 +77,6 @@ done
 echo "Resumen de configuraciones generado en $summary_file."
 
 # Comprimir el directorio BASE_DIR en el archivo SNAPSHOT_NAME
-zip -r "${SNAPSHOT_NAME}.zip" "${BASE_DIR}"
+zip -r "${SNAPSHOT_NAME}" "${BASE_DIR}"
 
 echo "Archivo de snapshot generado: ${SNAPSHOT_NAME}"
